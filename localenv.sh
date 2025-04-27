@@ -1,8 +1,13 @@
 #!/bin/bash
 
 echo '### Stop and remove containers ###'
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
+#docker stop $(docker ps -a -q)
+echo '#$(docker ps -a | grep "mysql:" | awk '{ print $1 }')'
+echo containers: $(docker ps -a | grep "mysql:" | awk '{ print $1 }')
+docker stop $(docker ps -a | grep "mysql:" | awk '{ print $1 }')
+
+#docker rm $(docker ps -a -q)
+docker rm $(docker ps -a | grep "mysql:" | awk '{ print $1 }')
 
 echo '### Pull docker images ###'
 docker pull mysql:8.3.0

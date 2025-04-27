@@ -1,2 +1,2 @@
 org.rangiffler.jupiter.ContextHolderExtension
-org.rangiffler.jupiter.AllureDockerExtension
+#org.rangiffler.jupiter.AllureDockerExtension

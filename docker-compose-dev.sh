@@ -13,6 +13,11 @@ else
   bash ./gradlew jibDockerBuild -x :rangiffler-e2e:test
 fi
 
-docker image prune -f
+#docker image prune -f
+echo #docker rmi $(docker images -q --filter "reference=dtuchs/*" | awk '{ print $1 }')
+echo images: $(docker images -q --filter "reference=dtuchs/*" | awk '{ print $1 }')
+docker rmi $(docker images -q --filter "reference=dtuchs/*" | awk '{ print $1 }')
+
 docker compose up -d
-docker ps -a
+#docker ps -a | grep -E "dtuchs|mysql"
+docker compose ps

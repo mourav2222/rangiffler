@@ -61,7 +61,7 @@ spring:
   datasource:
     url: 'jdbc:mysql://127.0.0.1:3306/rangiffler-api?serverTimezone=UTC&createDatabaseIfNotExist=true'
 rangiffler-front:
-  base-uri: 'http://127.0.0.1:3001'
+  base-uri: 'http://127.0.0.1:3002'
 ---
 spring:
   config:
@@ -75,5 +75,5 @@ spring:
   datasource:
     url: 'jdbc:mysql://rangiffler-mysql:3306/rangiffler-api?serverTimezone=UTC&createDatabaseIfNotExist=true'
 rangiffler-front:
-  base-uri: 'http://client.rangiffler.dc'
+  base-uri: 'http://client.rangiffler.dc:8082'
 ---
