@@ -9,7 +9,7 @@ public class LocalConfig implements Config {
 
   @Override
   public String frontUrl() {
-    return "http://127.0.0.1:3001";
+    return "http://127.0.0.1:3002";
   }
 
   @Override
@@ -25,5 +25,10 @@ public class LocalConfig implements Config {
   @Override
   public String apiJdbcUrl() {
     return "jdbc:mysql://127.0.0.1:3306/rangiffler-api?serverTimezone=UTC";
+  }
+
+  @Override
+  public String allureDockerUrl() {
+    return null;
   }
 }
