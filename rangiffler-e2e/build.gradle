@@ -35,7 +35,8 @@ apollo {
         srcDir("src/test/graphql")
         mapScalar("Date", "java.util.Date")
         introspection {
-            endpointUrl.set("http://127.0.0.1:8080/graphql")
+            //endpointUrl.set("http://127.0.0.1:8080/graphql")
+            endpointUrl.set("http://api.rangiffler.dc:8080/graphql")
             schemaFile.set(file("src/test/graphql/schema.graphqls"))
         }
         outputDirConnection {
