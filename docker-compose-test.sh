@@ -2,7 +2,7 @@
 export FRONT_VERSION="1.0"
 export ARCH=$(uname -m)
 
-export ALLURE_DOCKER_API="https://allure-service.mxytin-rt.duckdns.org"
+export ALLURE_DOCKER_API="https://allure-service.mxytin.ip-ddns.com"
 export BUILD_URL="https://github.com/mourav2222/rangiffler"
 export HEAD_COMMIT_MESSAGE="test docker run"
 export EXECUTION_TYPE="manual"
