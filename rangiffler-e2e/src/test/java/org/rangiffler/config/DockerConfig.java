@@ -22,13 +22,7 @@ public class DockerConfig implements Config {
 
   @Override
   public String frontUrl() {
-
-
-    // Docker ci on github
-    return "http://client.rangiffler.dc";
-
-    // Docker local with port 8082
-    //return "http://client.rangiffler.dc:8082";
+    return "http://client.rangiffler.dc:8082";
   }
 
   @Override
