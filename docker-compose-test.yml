@@ -56,7 +56,7 @@ services:
       - rangiffler-network
 
   rangiffler-e2e:
-    container_name: rangiffler-e2e
+    container_name: rangiffler-e2e.rangiffler.dc
     image: dtuchs/rangiffler-e2e:latest
     build:
       context: ./

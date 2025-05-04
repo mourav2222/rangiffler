@@ -30,7 +30,7 @@ public class AllureDockerExtension implements SuiteExtension {
   @Override
   @SneakyThrows
   public void beforeSuite(ExtensionContext context) {
-    System.setProperty("test.env", "local");
+    // System.setProperty("test.env", "local");
     if (List.of("docker", "local").contains(System.getProperty("test.env"))) {
       allureDockerApiClient.createProjectIfNotExist(projectId);
       allureDockerApiClient.clean(projectId);

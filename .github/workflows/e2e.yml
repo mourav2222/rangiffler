@@ -36,11 +36,11 @@ jobs:
           : # run e2e tests
           docker compose -f docker-compose-test.yml up -d
           docker ps -a
-          docker wait rangiffler-e2e
-          exit_code=$(docker inspect -f '{{.State.ExitCode}}' rangiffler-e2e)
+          docker wait rangiffler-e2e.rangiffler.dc
+          exit_code=$(docker inspect -f '{{.State.ExitCode}}' rangiffler-e2e.rangiffler.dc)
           echo "e2e_exit_code=$exit_code" >> $GITHUB_OUTPUT
           echo "### Test logs ###"
-          docker logs rangiffler-e2e
+          docker logs rangiffler-e2e.rangiffler.dc
           docker compose -f docker-compose-test.yml down
           docker system prune -a -f
           if [ "$exit_code" -eq "0" ]; then
