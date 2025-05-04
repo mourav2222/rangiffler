@@ -22,7 +22,7 @@ public class DockerConfig implements Config {
 
   @Override
   public String frontUrl() {
-    return "http://client.rangiffler.dc";
+    return "http://client.rangiffler.dc:8082";
   }
 
   @Override
