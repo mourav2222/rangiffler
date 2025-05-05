@@ -56,7 +56,7 @@ services:
       - rangiffler-network
 
   rangiffler-e2e:
-    container_name: rangiffler-e2e
+    container_name: rangiffler-e2e.rangiffler.dc
     image: dtuchs/rangiffler-e2e:latest
     build:
       context: ./
@@ -74,11 +74,15 @@ services:
     depends_on:
       client.rangiffler.dc:
         condition: service_started
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     networks:
       - rangiffler-network
 
   selenoid:
     image: aerokube/selenoid:latest-release
+    container_name: selenoid
     platform: linux/${ARCH}
     volumes:
       - ./selenoid:/etc/selenoid

@@ -30,7 +30,8 @@ public class AllureDockerExtension implements SuiteExtension {
   @Override
   @SneakyThrows
   public void beforeSuite(ExtensionContext context) {
-    if ("docker".equals(System.getProperty("test.env"))) {
+    // System.setProperty("test.env", "local");
+    if (List.of("docker", "local").contains(System.getProperty("test.env"))) {
       allureDockerApiClient.createProjectIfNotExist(projectId);
       allureDockerApiClient.clean(projectId);
     }
@@ -38,7 +39,7 @@ public class AllureDockerExtension implements SuiteExtension {
 
   @Override
   public void afterSuite() {
-    if ("docker".equals(System.getProperty("test.env"))) {
+    if (List.of("docker", "local").contains(System.getProperty("test.env"))) {
       try (Stream<Path> paths = Files.walk(Path.of(allureResultsDirectory))) {
         List<Path> allureResults = paths.filter(Files::isRegularFile).toList();
         List<DecodedAllureFile> filesToSend = new ArrayList<>();
@@ -59,11 +60,16 @@ public class AllureDockerExtension implements SuiteExtension {
                 filesToSend
             )
         );
+
+        final String hcm = System.getenv("HEAD_COMMIT_MESSAGE");
+        final String bu = System.getenv("BUILD_URL");
+        final String et = System.getenv("EXECUTION_TYPE");
+
         allureDockerApiClient.generateReport(
             projectId,
-            System.getenv("HEAD_COMMIT_MESSAGE"),
-            System.getenv("BUILD_URL"),
-            System.getenv("EXECUTION_TYPE")
+                (hcm != null) ? hcm : "HEAD_COMMIT_MESSAGE",
+                (bu != null) ? bu : "BUILD_URL",
+                (et != null) ? et : "EXECUTION_TYPE"
         );
       } catch (IOException e) {
         throw new RuntimeException(e);

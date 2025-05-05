@@ -18,4 +18,4 @@ COPY ./build.gradle ./
 COPY ./settings.gradle ./
 COPY ./gradle.properties ./
 
-CMD ./gradlew test -Dtest.env=docker
+CMD ./gradlew test -Dtest.env=docker -i

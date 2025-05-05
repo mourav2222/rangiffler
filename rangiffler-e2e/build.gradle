@@ -35,7 +35,8 @@ apollo {
         srcDir("src/test/graphql")
         mapScalar("Date", "java.util.Date")
         introspection {
-            endpointUrl.set("http://127.0.0.1:8080/graphql")
+            //endpointUrl.set("http://127.0.0.1:8080/graphql")
+            endpointUrl.set("http://api.rangiffler.dc:8080/graphql")
             schemaFile.set(file("src/test/graphql/schema.graphqls"))
         }
         outputDirConnection {
@@ -76,6 +77,9 @@ dependencies {
     testImplementation("io.qameta.allure:allure-okhttp3:${allureVersion}") {
         exclude group: "com.squareup.okhttp3"
     }
+
+    testImplementation 'io.qameta.allure:allure-selenide:2.29.1'
+
     // Utils
     testImplementation "com.github.javafaker:javafaker:${fakerVersion}"
     testImplementation 'commons-io:commons-io:2.16.1'

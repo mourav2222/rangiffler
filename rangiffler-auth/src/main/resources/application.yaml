@@ -62,7 +62,8 @@ spring:
   datasource:
     url: 'jdbc:mysql://rangiffler-mysql:3306/rangiffler-auth?serverTimezone=UTC&createDatabaseIfNotExist=true'
 rangiffler-front:
-  base-uri: 'http://client.rangiffler.dc:8082'
+  #base-uri: 'http://client.rangiffler.dc:8082'
+  base-uri: 'http://client.rangiffler.dc'
 rangiffler-auth:
   base-uri: 'http://auth.rangiffler.dc:9000'
 ---

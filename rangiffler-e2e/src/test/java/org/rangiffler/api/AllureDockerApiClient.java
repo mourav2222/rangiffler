@@ -1,5 +1,6 @@
 package org.rangiffler.api;
 
+import okhttp3.OkHttpClient;
 import org.junit.jupiter.api.Assertions;
 import org.rangiffler.config.Config;
 import org.rangiffler.model.AllureProject;
@@ -10,16 +11,25 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class AllureDockerApiClient {
 
   private static final Logger LOG = LoggerFactory.getLogger(AllureDockerApiClient.class);
   private static final Config CFG = Config.getInstance();
 
+  private static final OkHttpClient httpClient = new OkHttpClient.Builder()
+          .connectTimeout(30, TimeUnit.SECONDS)  // time to establish connection
+          .readTimeout(30, TimeUnit.SECONDS)     // time to wait for data
+          .writeTimeout(30, TimeUnit.SECONDS)    // time to send data
+          .build();
+
   private static final Retrofit retrofit = new Retrofit.Builder()
-      .baseUrl(CFG.allureDockerUrl())
-      .addConverterFactory(JacksonConverterFactory.create())
-      .build();
+          .baseUrl(CFG.allureDockerUrl())
+          .addConverterFactory(JacksonConverterFactory.create())
+          .client(httpClient)
+          .build();
+
 
   private final AllureDockerApi allureDockerApi;
 
